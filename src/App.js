@@ -1,12 +1,19 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
 import './App.css';
+
+import { getCurrentUser } from './actions/currentUser.js'
 
 import Welcome from './components/Welcome.js'
 import UserForm from './components/user/UserForm.js'
 
 class App extends Component {
+
+    componentDidMount(){
+        this.props.getCurrentUser()
+    }
 
     render(){
         return(
@@ -24,4 +31,4 @@ class App extends Component {
     }
 }
 
-export default App;
+export default connect(null, { getCurrentUser })(App);
