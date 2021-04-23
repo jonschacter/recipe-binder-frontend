@@ -91,3 +91,25 @@ export const logout = (history) => {
         .catch(error => alert(error))
     }  
 }
+
+export const renameBinder = (userInfo) => {
+    return dispatch => {
+        return fetch(`${API_ROOT}/users/${userInfo.id}`, {
+            credentials: "include",
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(userInfo)
+        })
+            .then(resp => resp.json())
+            .then(data => {
+                if (data.error) {
+                    alert(data.error)
+                } else {
+                    dispatch(setCurrentUser(data))
+                }
+            })
+            .catch(error => alert(error))
+    }
+}
