@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 import { signup } from '../../actions/currentUser.js'
+import { login } from '../../actions/currentUser.js'
 
 class UserForm extends Component {
     constructor(props){
@@ -18,7 +19,7 @@ class UserForm extends Component {
         if (this.props.match.path === "/signup") {
             this.props.signup(this.state, this.props.history)
         } else {
-
+            this.props.login(this.state, this.props.history)
         }
     }
 
@@ -43,4 +44,4 @@ class UserForm extends Component {
     }
 }
 
-export default connect(null, { signup })(UserForm)
+export default connect(null, { signup, login })(UserForm)
