@@ -9,6 +9,7 @@ import { getCurrentUser } from './actions/currentUser.js'
 import Navbar from './components/Navbar.js'
 import Welcome from './components/Welcome.js'
 import UserForm from './components/user/UserForm.js'
+import RecipeBinder from './components/recipe/RecipeBinder.js'
 
 class App extends Component {
 
@@ -26,6 +27,7 @@ class App extends Component {
                         <Route exact path="/" component={Welcome} />
                         <Route exact path="/login" render={(routerProps) => <UserForm {...routerProps} />} />
                         <Route exact path="/signup" render={(routerProps) => <UserForm {...routerProps} />} />
+                        <Route exact path="/recipes" component={RecipeBinder} />
                     </Switch>
                 </Router>
             </div>
