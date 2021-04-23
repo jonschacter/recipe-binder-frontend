@@ -6,7 +6,7 @@ import { logout } from '../actions/currentUser.js'
 
 const Navbar = ({ loggedIn, logout, history }) => {
     return(
-        <div>
+        <div className="navbar">
             { loggedIn ? <><Link onClick={ () => logout(history) }>Log Out</Link></> : <></> }
         </div>
     )

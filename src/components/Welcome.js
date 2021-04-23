@@ -10,7 +10,7 @@ const Welcome = ({ loggedIn, logout, history }) => {
     }
     
     return (
-        <div>
+        <div className="welcome">
             <h2>Welcome</h2>
             { loggedIn ? redirect() : <p>Please <Link to="/login">Log In</Link> or <Link to="/signup">Sign Up</Link>.</p>}
         </div>

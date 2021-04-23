@@ -31,7 +31,7 @@ class UserForm extends Component {
 
     render(){
         return(
-            <form onSubmit={this.handleSubmit}>
+            <form className="user-form" onSubmit={this.handleSubmit}>
                 <label>Username:</label>
                 <input type="text" name="username" onChange={this.handleChange} value={this.state.username} />
                 <br />

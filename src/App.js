@@ -9,7 +9,7 @@ import { getCurrentUser } from './actions/currentUser.js'
 import Navbar from './components/Navbar.js'
 import Welcome from './components/Welcome.js'
 import UserForm from './components/user/UserForm.js'
-import RecipeBinder from './components/recipe/RecipeBinder.js'
+import RecipeBinder from './components/recipe/RecipeBinderContainer.js'
 
 class App extends Component {
 
