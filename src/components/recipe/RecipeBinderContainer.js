@@ -6,7 +6,7 @@ import RecipeBinder from './RecipeBinder.js'
 const RecipeBinderContainer = ({ user }) => {
     return(
         <div className="recipe-binder-container">
-            { user ? <RecipeBinder user={user} /> : <h3>LOADING...</h3> }
+            { user ? <RecipeBinder /> : <h3>LOADING...</h3> }
         </div>
     )
 }
