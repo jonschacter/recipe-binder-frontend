@@ -7,6 +7,12 @@ export const setCurrentUser = user => {
     }
 }
 
+export const clearCurrentUser = () => {
+    return {
+        type: "CLEAR_CURRENT_USER"
+    }
+}
+
 export const getCurrentUser = () => {
     return dispatch => {
         return fetch(`${API_ROOT}/current_user`, {
@@ -43,9 +49,22 @@ export const signup = (userInfo, history) => {
                 if (data.error) {
                     alert(data.error)
                 } else {
-                    // ADD STUFF HERE
+                    dispatch(setCurrentUser(data))
+                    history.push("/")
                 }
             })
             .catch(error => alert(error))
     }
+}
+
+export const logout = (history) => {
+    return dispatch => {
+        dispatch(clearCurrentUser())
+        return fetch(`${API_ROOT}/logout`, {
+            credentials: "include",
+            method: "DELETE"
+        })
+        .then(history.push("/"))
+        .catch(error => alert(error))
+    }  
 }
