@@ -57,6 +57,29 @@ export const signup = (userInfo, history) => {
     }
 }
 
+export const login = (userInfo, history) => {
+    return dispatch => {
+        return fetch(`${API_ROOT}/login`, {
+            credentials: "include",
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(userInfo)
+        })
+            .then(resp => resp.json())
+            .then(data => {
+                if (data.error) {
+                    alert(data.error)
+                } else {
+                    dispatch(setCurrentUser(data))
+                    history.push("/")
+                }
+            })
+            .catch(error => alert(error))
+    }
+}
+
 export const logout = (history) => {
     return dispatch => {
         dispatch(clearCurrentUser())
