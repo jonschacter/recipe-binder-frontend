@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import './App.css';
 
 import Welcome from './components/Welcome.js'
+import UserForm from './components/user/UserForm.js'
 
 class App extends Component {
 
@@ -14,6 +15,8 @@ class App extends Component {
                 <Router>
                     <Switch>
                         <Route exact path="/" component={Welcome} />
+                        <Route exact path="/login" render={(routerProps) => <UserForm {...routerProps} />} />
+                        <Route exact path="/signup" render={(routerProps) => <UserForm {...routerProps} />} />
                     </Switch>
                 </Router>
             </div>
