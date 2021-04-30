@@ -1,13 +1,22 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
 import BinderName from './BinderName.js'
+import Categories from '../category/Categories.js'
 
-const RecipeBinder = () => {
+const RecipeBinder = ({ recipes }) => {
     return(
         <div className="recipe-binder">
             <BinderName />
+            { recipes.length > 0 ? < Categories categories={recipes} /> : <h3>LOADING...</h3>}
         </div>
     )
 }
 
-export default RecipeBinder
+const mapStateToProps = ({ recipes }) => {
+    return {
+        recipes
+    }
+}
+
+export default connect(mapStateToProps)(RecipeBinder)
