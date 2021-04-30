@@ -10,6 +10,7 @@ import Navbar from './components/Navbar.js'
 import Welcome from './components/Welcome.js'
 import UserForm from './components/user/UserForm.js'
 import RecipeBinder from './components/recipe/RecipeBinderContainer.js'
+import EditCategories from './components/category/EditCategories.js'
 
 class App extends Component {
 
@@ -28,6 +29,7 @@ class App extends Component {
                         <Route exact path="/login" render={(routerProps) => <UserForm {...routerProps} />} />
                         <Route exact path="/signup" render={(routerProps) => <UserForm {...routerProps} />} />
                         <Route exact path="/recipes" component={RecipeBinder} />
+                        <Route exact path="/categories/edit" component={EditCategories} />
                     </Switch>
                 </Router>
             </div>
