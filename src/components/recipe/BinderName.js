@@ -25,7 +25,7 @@ class BinderName extends Component {
         
         return(
             <div className="binder-name">
-                <h3>{ binder_name ? binder_name : <>MY BINDER</>}</h3>
+                <h2>{ binder_name ? binder_name : <>MY BINDER</>}</h2>
             </div>
         )
     }
