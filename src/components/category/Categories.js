@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 
 import Category from './Category.js'
 
@@ -17,6 +18,7 @@ class Categories extends Component {
     render(){
         return(
             <div className="categories">
+                <Link to={`/categories/edit`}>Edit Categories</Link>
                 { this.renderCategories() }
             </div>
         )
