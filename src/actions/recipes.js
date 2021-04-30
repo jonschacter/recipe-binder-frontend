@@ -1,6 +1,10 @@
 import API_ROOT from '../apiRoot.js'
 
-export const getCategories = () => {
+export const setRecipes = recipes => {
+    
+}
+
+export const getRecipes = () => {
     return dispatch => {
         return fetch(`${API_ROOT}/categories`, {
             credentials: "include",

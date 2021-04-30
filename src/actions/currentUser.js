@@ -1,5 +1,5 @@
 import API_ROOT from '../apiRoot.js'
-import { getCategories } from './categories.js'
+import { getRecipes } from './recipes.js'
 
 export const setCurrentUser = user => {
     return {
@@ -27,7 +27,7 @@ export const getCurrentUser = () => {
             .then(data => {
                 if (!data.error) {
                     dispatch(setCurrentUser(data))
-                    dispatch(getCategories())
+                    dispatch(getRecipes())
                 }
             })
             .catch(error => alert(error))
@@ -52,7 +52,7 @@ export const signup = (userInfo, history) => {
                     alert(data.error)
                 } else {
                     dispatch(setCurrentUser(data))
-                    dispatch(getCategories())
+                    dispatch(getRecipes())
                     history.push("/")
                 }
             })
@@ -76,7 +76,7 @@ export const login = (userInfo, history) => {
                     alert(data.error)
                 } else {
                     dispatch(setCurrentUser(data))
-                    dispatch(getCategories())
+                    dispatch(getRecipes())
                     history.push("/")
                 }
             })
