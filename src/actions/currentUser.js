@@ -1,4 +1,5 @@
 import API_ROOT from '../apiRoot.js'
+import { getCategories } from './categories.js'
 
 export const setCurrentUser = user => {
     return {
@@ -26,6 +27,7 @@ export const getCurrentUser = () => {
             .then(data => {
                 if (!data.error) {
                     dispatch(setCurrentUser(data))
+                    dispatch(getCategories())
                 }
             })
             .catch(error => alert(error))
@@ -50,6 +52,7 @@ export const signup = (userInfo, history) => {
                     alert(data.error)
                 } else {
                     dispatch(setCurrentUser(data))
+                    dispatch(getCategories())
                     history.push("/")
                 }
             })
@@ -73,6 +76,7 @@ export const login = (userInfo, history) => {
                     alert(data.error)
                 } else {
                     dispatch(setCurrentUser(data))
+                    dispatch(getCategories())
                     history.push("/")
                 }
             })
