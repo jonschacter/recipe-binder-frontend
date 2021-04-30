@@ -10,7 +10,7 @@ class Categories extends Component {
             this.props.categories.sort((a,b) => {
                 return (a.position < b.position) ? -1: 1
             }).map(cat => {
-                return <Category category={cat} />
+                return <Category key={cat.id} category={cat} />
             })
         )
     }
