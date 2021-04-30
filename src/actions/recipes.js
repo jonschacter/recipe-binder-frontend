@@ -1,7 +1,10 @@
 import API_ROOT from '../apiRoot.js'
 
 export const setRecipes = recipes => {
-    
+    return {
+        type: "SET_RECIPES",
+        recipes
+    }
 }
 
 export const getRecipes = () => {
@@ -18,7 +21,7 @@ export const getRecipes = () => {
                 if (data.error) {
                     alert(data.error)
                 } else {
-                    console.log(data)
+                    dispatch(setRecipes(data))
                 }
             })
             .catch(error => alert(error))
