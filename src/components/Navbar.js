@@ -7,7 +7,7 @@ import { logout } from '../actions/currentUser.js'
 const Navbar = ({ loggedIn, logout, history }) => {
     return(
         <div className="navbar">
-            { loggedIn ? <><Link onClick={ () => logout(history) }>Log Out</Link></> : <></> }
+            { loggedIn ? <><Link to="/recipes">Recipes</Link> | <Link onClick={ () => logout(history) }>Log Out</Link></> : <></> }
         </div>
     )
 }
