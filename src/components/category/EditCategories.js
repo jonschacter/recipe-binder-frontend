@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
 import { DragDropContext, Droppable } from 'react-beautiful-dnd'
+import { connect } from 'react-redux'
+
+import { updateCategories } from '../../actions/categories.js'
 
 import EditCategory from './EditCategory.js'
 
@@ -15,25 +18,35 @@ class EditCategories extends Component {
     }
 
     onDragEnd = result => {
-        console.log(result)
-
         const { destination, source } = result
 
         if (!destination) {
             return
         }
 
+        const newCategories = Array.from(this.state.categories)
+
         if (destination.index !== source.index) {
-            console.log("moved")
-            const newCategories = Array.from(this.state.categories)
-            console.log(this.state.categories)
             const removedObject = newCategories.splice(source.index, 1)
-            console.log(removedObject)
             newCategories.splice(destination.index, 0, removedObject[0])
-            console.log(newCategories)
             this.setState({
                 categories: newCategories
             })
+        }
+
+        // const categoriesForUpdate = newCategories.filter((cat, i) => cat.position !== i + 1)
+        const categoriesForUpdate = newCategories.reduce(function(filtered, cat, i) {
+            if (cat.position !== i + 1) {
+                filtered.push({
+                    ...cat,
+                    position: i + 1
+                })
+            }
+            return filtered
+        }, [])
+        
+        if (categoriesForUpdate.length > 0) {
+            this.props.updateCategories(categoriesForUpdate)
         }
     }
 
@@ -55,4 +68,4 @@ class EditCategories extends Component {
     }
 }
 
-export default EditCategories
+export default connect(null, { updateCategories })(EditCategories)
