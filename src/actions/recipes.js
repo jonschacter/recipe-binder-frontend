@@ -5,7 +5,7 @@ export const setRecipes = recipes => {
         type: "SET_RECIPES",
         recipes
     }
-}
+} 
 
 export const getRecipes = () => {
     return dispatch => {
