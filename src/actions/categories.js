@@ -27,3 +27,20 @@ export const updateCategories = (categories) => {
             .catch(error => alert(error))
     }
 }
+
+export const deleteCategory = (id) => {
+    return dispatch => {
+        return fetch(`${API_ROOT}/categories/${id}`, {
+            credentials: "include",
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+            .then(resp => resp.json())
+            .then(data => {
+                console.log(data)
+            })
+            .catch(error => alert(error))
+    }
+}

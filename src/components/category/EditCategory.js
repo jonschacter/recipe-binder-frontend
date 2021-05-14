@@ -1,11 +1,16 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import { Draggable } from 'react-beautiful-dnd'
 
+import { deleteCategory } from '../../actions/categories.js'
+
+
 class EditCategory extends Component {
-    handleClick = (e) => {
-        console.log(`${e.target.name} - ${e.target.id}`)
-        if (window.confirm('Deleting this category will also delete any associated recipes. Are you sure you want to proceed?')) {
+    handleClick = ({target: { name, id }}) => {
+        console.log(`clicked to delete ${name} - ${id}`)
+        if (window.confirm(`Deleting '${name}' will also delete any associated recipes. Are you sure you want to proceed?`)) {
             console.log("user confirmed delete")
+            this.props.deleteCategory(id)
         }
     }
     
@@ -23,4 +28,4 @@ class EditCategory extends Component {
     }
 }
 
-export default EditCategory
+export default connect(null, { deleteCategory })(EditCategory)
