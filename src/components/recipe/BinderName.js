@@ -60,7 +60,7 @@ class BinderName extends Component {
         return(
             <div className="binder-title">
                 {this.state.formToggle ? this.renderForm() : this.renderName()}
-                <Link onClick={this.toggleForm}>{ this.state.formToggle ? <>Cancel Binder Rename</> : <>Rename Binder</> }</Link>
+                <Link to="#" onClick={this.toggleForm}>{ this.state.formToggle ? <>Cancel Binder Rename</> : <>Rename Binder</> }</Link>
             </div>
         )
     }

@@ -20,7 +20,7 @@ export const updateCategories = (categories) => {
         })
             .then(resp => resp.json())
             .then(data => {
-                data.map(cat => {
+                data.forEach(cat => {
                     dispatch(updateCategory(cat))
                 })
             })

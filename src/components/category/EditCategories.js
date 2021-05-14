@@ -34,7 +34,6 @@ class EditCategories extends Component {
             })
         }
 
-        // const categoriesForUpdate = newCategories.filter((cat, i) => cat.position !== i + 1)
         const categoriesForUpdate = newCategories.reduce(function(filtered, cat, i) {
             if (cat.position !== i + 1) {
                 filtered.push({
