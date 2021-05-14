@@ -27,9 +27,11 @@ export const updateCategories = (categories) => {
         })
             .then(resp => resp.json())
             .then(data => {
-                data.forEach(cat => {
-                    dispatch(updateCategory(cat))
-                })
+                if (!data.error) {
+                    data.forEach(cat => {
+                        dispatch(updateCategory(cat))
+                    })
+                }
             })
             .catch(error => alert(error))
     }
