@@ -7,6 +7,13 @@ export const updateCategory = category => {
     }
 }
 
+export const removeCategory = categoryId => {
+    return {
+        type: "REMOVE_CATEGORY",
+        categoryId
+    }
+}
+
 export const updateCategories = (categories) => {
     return dispatch => {
         return fetch(`${API_ROOT}/categories/reorder`, {
@@ -39,7 +46,14 @@ export const deleteCategory = (id) => {
         })
             .then(resp => resp.json())
             .then(data => {
-                console.log(data)
+                if (!data.error) {
+                    dispatch(removeCategory(id))
+                    data.forEach(cat => {
+                        dispatch(updateCategory(cat))
+                    })
+                } else {
+                    alert(data.error)
+                }
             })
             .catch(error => alert(error))
     }
