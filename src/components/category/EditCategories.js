@@ -24,7 +24,7 @@ class EditCategories extends Component {
             return
         }
 
-        const newCategories = Array.from(this.state.categories)
+        const newCategories = [...this.state.categories]
 
         if (destination.index !== source.index) {
             const removedObject = newCategories.splice(source.index, 1)
@@ -49,6 +49,14 @@ class EditCategories extends Component {
         }
     }
 
+    removeCategory = (categoryId) => {
+        this.setState(prevState => {
+            return {
+                categories: prevState.categories.filter(cat => cat.id !== parseInt(categoryId))
+            }
+        })
+    }
+
     render(){
         return(
             <DragDropContext onDragEnd={this.onDragEnd}>
@@ -56,7 +64,7 @@ class EditCategories extends Component {
                     {(provided) => (
                         <div {...provided.droppableProps} ref={provided.innerRef}>
                             {this.state.categories.map((cat, i) => {
-                                return <EditCategory key={cat.id} category={cat} index={i}/>
+                                return <EditCategory key={cat.id} category={cat} index={i} removeCategory={this.removeCategory}/>
                             })}
                             {provided.placeholder}
                         </div>

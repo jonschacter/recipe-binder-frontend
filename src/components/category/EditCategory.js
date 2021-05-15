@@ -8,9 +8,11 @@ import { deleteCategory } from '../../actions/categories.js'
 class EditCategory extends Component {
     handleClick = ({target: { name, id }}) => {
         console.log(`clicked to delete ${name} - ${id}`)
+        const { deleteCategory, removeCategory } = this.props
         if (window.confirm(`Deleting '${name}' will also delete any associated recipes. Are you sure you want to proceed?`)) {
             console.log("user confirmed delete")
-            this.props.deleteCategory(id)
+            deleteCategory(id)
+           removeCategory(id)
         }
     }
     
@@ -20,7 +22,7 @@ class EditCategory extends Component {
             <Draggable draggableId={"" + category.id} index={index}>
                 {(provided) => (
                     <div {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}>
-                        <h3>{category.name}<button id={category.id} name={category.name} onClick={this.handleClick}>x</button></h3>
+                        <h3>{category.name}<button id={category.id} name={category.name} onClick={this.handleClick}>x</button></h3> 
                     </div>
                 )}
             </Draggable>
